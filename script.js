@@ -68,3 +68,6 @@ document.getElementById('imgcompress-btn').addEventListener('click', function() 
 
     reader.readAsDataURL(file);
 });
+compressionLevelSlider.addEventListener('input', function () {
+    sliderValue.textContent = `${this.value}%`;
+});
