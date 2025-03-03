@@ -171,3 +171,28 @@ footer a:hover {
         font-size: 14px;
     }
 }
+/* Responsive Design */
+@media (max-width: 768px) {
+	header h1 {
+		font-size: 2rem;
+	}
+
+	.tool-grid {
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	}
+}
+
+@media (max-width: 480px) {
+	nav a {
+		display: block;
+		margin: 10px 0;
+	}
+
+	.tool-card {
+		padding: 15px;
+	}
+
+	.tool-card h3 {
+		font-size: 1.1rem;
+	}
+}
