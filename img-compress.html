@@ -37,11 +37,16 @@
         </section>
 
         <section id="compression-tool">
+            <label for="input-File">Select Image File:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="file" id="image-input" accept="image/*">
             <br/>
-            <label for="compression-level">Compression Level:</label>
-            <input type="range" id="compression-level" min="0" max="1" step="0.1" value="0.5">
+            <!-- Slider for Compression Level -->
+            <div class="slider-container">
+                <label for="compression-level">Compression Level: <span id="slider-value">50%</span></label>
+                <input type="range" id="compression-level" min="10" max="90" value="50" step="10">
+            </div>
             <button id="compress-btn">Compress Image</button>
+            <br/>
             <div id="image-container">
                 <img id="output-image" src="" alt="Compressed Image">
             </div>
