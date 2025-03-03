@@ -40,6 +40,21 @@ nav a:hover {
     color: #f1c40f; /* Bright yellow for hover effect */
 }
 
+a:link {
+  text-decoration: none !important;
+}
+
+a:visited {
+  text-decoration: none !important;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
 /* Main Content */
 main {
     padding: 20px;
