@@ -1,9 +1,7 @@
 // script.js
 document.getElementById('compress-btn').addEventListener('click', function() {
     const fileInput = document.getElementById('image-input');
-    const compressionLevel = parseFloat(document.getElementById('compression-level').value);
-    document.getElementById('output-image').style.display = 'none';
-    document.getElementById('download-link"').style.display = 'none';
+    const compressionLevel = parseFloat(document.getElementById('compression-level').value);    
     const imageContainer = document.getElementById('output-image');
     const downloadLink = document.getElementById('download-link');
 
@@ -34,11 +32,3 @@ document.getElementById('compress-btn').addEventListener('click', function() {
         reader.readAsDataURL(fileInput.files[0]);
     }
 });
-
-function TakeOff() {
-     document.getElementById('output-image').style.display = 'none';
-     document.getElementById('download-link"').style.display = 'none';
-}
-window.onload = function() {
-    TakeOff(); // add this so it runs at startup
-};
