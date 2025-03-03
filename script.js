@@ -1,7 +1,13 @@
 // script.js
+document.getElementById('compression-level').addEventListener('input', function() {
+    const compressionLevel = parseFloat(this.value);
+    const compressionLevelValue = document.getElementById('compression-level-value');
+    compressionLevelValue.textContent = `${Math.round(compressionLevel * 100)}%`;
+});
+
 document.getElementById('compress-btn').addEventListener('click', function() {
     const fileInput = document.getElementById('image-input');
-    const compressionLevel = parseFloat(document.getElementById('compression-level').value);    
+    const compressionLevel = parseFloat(document.getElementById('compression-level').value);
     const imageContainer = document.getElementById('output-image');
     const downloadLink = document.getElementById('download-link');
 
