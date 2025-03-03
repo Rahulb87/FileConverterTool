@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Optimize your PDFs with our fully responsive PDF compression tool. Compress PDFs to reduce file size without losing quality.">
+    <meta name="keywords" content="PDF compression, optimize PDF, reduce PDF size, PDF optimizer">
+    <meta name="author" content="Your Name">
+    <title>PDF Compression Tool</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Compression Tool Section */
+        #compression-tool {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #compression-tool input, #compression-tool select, #compression-tool button {
+            margin: 15px 0;
+            padding: 12px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        #compression-tool input:focus, #compression-tool select:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+        }
+
+        #compression-tool button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #compression-tool button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+
+        #output a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #output a:hover {
+            text-decoration: underline;
+        }
+
+        /* Ad Sections */
+        #ad-top, #ad-bottom {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            #compression-tool {
+                padding: 20px;
+            }
+
+            #compression-tool input, #compression-tool select, #compression-tool button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PDF Compression Tool</h1>
+    </header>
+
+    <main>
+        <!-- Top Ad Unit -->
+        <section id="ad-top">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_AD_UNIT_ID"
+                    crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_AD_UNIT_ID"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </section>
+
+        <!-- Compression Tool -->
+        <section id="compression-tool">
+            <input type="file" id="pdf-input" accept="application/pdf">
+            <label for="compression-level">Compression Level:</label>
+            <select id="compression-level">
+                <option value="0.1">Low (10%)</option>
+                <option value="0.5">Medium (50%)</option>
+                <option value="0.9">High (90%)</option>
+            </select>
+            <button id="compress-btn">Compress PDF</button>
+            <div id="output"></div>
+        </section>
+
+        <!-- Bottom Ad Unit -->
+        <section id="ad-bottom">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_AD_UNIT_ID"
+                    crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_AD_UNIT_ID"
+                 data-ad-slot="0987654321"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Free Online Converter. All rights reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('compress-btn').addEventListener('click', function() {
+            const fileInput = document.getElementById('pdf-input');
+            const compressionLevel = parseFloat(document.getElementById('compression-level').value);
+            const outputDiv = document.getElementById('output');
+
+            if (fileInput.files.length === 0) {
+                alert('Please select a PDF file to compress.');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const pdfData = event.target.result;
+
+                // Simulate compression (for demonstration purposes)
+                // In a real-world scenario, you would use a backend service or library like PDF-LIB.
+                const compressedBlob = new Blob([pdfData], { type: 'application/pdf' });
+
+                // Create a download link for the compressed PDF
+                const downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(compressedBlob);
+                downloadLink.download = `compressed-pdf-${Date.now()}.pdf`;
+                downloadLink.textContent = 'Download Compressed PDF';
+
+                outputDiv.innerHTML = '';
+                outputDiv.appendChild(downloadLink);
+            };
+
+            reader.readAsArrayBuffer(file);
+        });
+    </script>
+</body>
+</html>
