@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Optimize your images with our fully responsive image compression tool. Compress images to reduce file size without losing quality.">
-    <meta name="keywords" content="image compression, optimize images, reduce image size, image optimizer">
-    <meta name="author" content="Rahul Bhute">
-    <title>Image Compression Tool</title>
+    <meta name="description" content="Compress your images online with our fully responsive image compression tool. Optimize images for web use with adjustable compression levels.">
+    <meta name="keywords" content="image compression, optimize images, image tool, online image compressor">
+    <meta name="author" content="Your Name">
+    <title>Online Image Compression Tool</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-5707879047868276/9661129952" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
-        <h1>Image Compression Tool</h1>
+        <h1>Online Image Compression Tool</h1>
     </header>
     <nav>
         <a href="/FileConverterTool/#">Home</a>
@@ -21,10 +23,8 @@
         <a href="/FileConverterTool/contact.html">Contact</a>
     </nav>
     <main>
-        <!-- Top Ad Unit -->
         <section id="ad-top">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-5707879047868276/9661129952"
-                    crossorigin="anonymous"></script>
+            <!-- AdSense Ad Unit -->
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-app-pub-5707879047868276/9661129952"
@@ -36,23 +36,20 @@
             </script>
         </section>
 
-        <!-- Compression Tool -->
         <section id="compression-tool">
-            <label for="input-File">Select Image File:</label>
             <input type="file" id="image-input" accept="image/*">
             <br/>
             <label for="compression-level">Compression Level:</label>
-            <select id="compression-level">
-                <option value="0.1">Low (10%)</option>
-                <option value="0.5">Medium (50%)</option>
-                <option value="0.9">High (90%)</option>
-            </select>
+            <input type="range" id="compression-level" min="0" max="1" step="0.1" value="0.5">
             <button id="compress-btn">Compress Image</button>
-            <div id="output"></div>
+            <div id="image-container">
+                <img id="output-image" src="" alt="Compressed Image">
+            </div>
+            <a id="download-link" href="#" download="compressed-image.jpg">Download Compressed Image</a>
         </section>
 
-        <!-- Bottom Ad Unit -->
         <section id="ad-bottom">
+            <!-- AdSense Ad Unit -->
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-5707879047868276/2796338706"
                     crossorigin="anonymous"></script>
             <ins class="adsbygoogle"
@@ -68,47 +65,9 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Free Online Converter. All rights reserved. | <a href="#">Privacy Policy</a></p>
+        <p>&copy; 2025 Free Online Converter. All rights reserved.</p>
     </footer>
 
-    <script>
-        document.getElementById('compress-btn').addEventListener('click', function() {
-            const fileInput = document.getElementById('image-input');
-            const compressionLevel = parseFloat(document.getElementById('compression-level').value);
-            const outputDiv = document.getElementById('output');
-
-            if (fileInput.files.length === 0) {
-                alert('Please select an image to compress.');
-                return;
-            }
-
-            const file = fileInput.files[0];
-            const reader = new FileReader();
-
-            reader.onload = function(event) {
-                const img = new Image();
-                img.src = event.target.result;
-
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-
-                    ctx.drawImage(img, 0, 0);
-
-                    canvas.toBlob(function(blob) {
-                        const compressedImg = document.createElement('img');
-                        compressedImg.src = URL.createObjectURL(blob);
-                        outputDiv.innerHTML = '';
-                        outputDiv.appendChild(compressedImg);
-                    }, 'image/jpeg', compressionLevel);
-                };
-            };
-
-            reader.readAsDataURL(file);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
