@@ -416,7 +416,7 @@ footer a:hover {
     text-align: center;
 }
 #download-link {
-    display: none; /* Hidden by default */
+    display: none !important; /* Hidden by default */
     padding: 10px 20px;
     background-color: #333;
     color: #fff;
