@@ -14,14 +14,17 @@ document.getElementById('convert-btn').addEventListener('click', async function(
     }
 
     try {
+        // Use Mammoth.js to extract text from DOCX
         const arrayBuffer = await file.arrayBuffer();
-        const docx = await window.docx.Packer.unpack(arrayBuffer);
-        const pdfDoc = await PDFLib.PDFDocument.create();
+        const result = await mammoth.extractRawText({ arrayBuffer: arrayBuffer });
+        const textContent = result.value; // Extracted text from DOCX
 
-        // Convert DOCX content to PDF (simplified example)
-        const page = pdfDoc.addPage();
+        // Use PDF-Lib to create a PDF
+        const pdfDoc = await PDFLib.PDFDocument.create();
+        const page = pdfDoc.addPage([600, 800]); // Set page size
         const { width, height } = page.getSize();
-        const textContent = docx.getBody().getText();
+
+        // Add text to the PDF
         page.drawText(textContent, {
             x: 50,
             y: height - 50,
@@ -29,10 +32,12 @@ document.getElementById('convert-btn').addEventListener('click', async function(
             color: PDFLib.rgb(0, 0, 0),
         });
 
+        // Save the PDF
         const pdfBytes = await pdfDoc.save();
         const blob = new Blob([pdfBytes], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
 
+        // Enable download link
         const downloadLink = document.getElementById('download-link');
         downloadLink.href = url;
         downloadLink.style.display = 'block';
