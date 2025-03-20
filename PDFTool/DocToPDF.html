@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Convert your DOC, DOCX, and other document formats to PDF online with our fully responsive DOC to PDF tool. Fast, secure, and easy to use.">
-    <meta name="keywords" content="DOC to PDF, convert DOC to PDF, online document converter, PDF tool">
-    <meta name="author" content="Your Name">
+    <meta name="description" content="Convert DOC files to PDF online with our fully responsive DOC to PDF tool. Easily convert Word documents to PDF format.">
+    <meta name="keywords" content="DOC to PDF, convert DOC, online PDF tool, Word to PDF, document converter">
+    <meta name="author" content="Rahul Bhute">
     <title>Online DOC to PDF Converter</title>
     <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="tools.css">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_ADSENSE_AD_UNIT_ID" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -22,14 +23,13 @@
         <a href="/FileConverterTool/contact.html">Contact</a>
     </nav>
     <main>
-        <!-- Top Ad Unit -->
-        <section id="ad-top">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-5707879047868276/9661129952"
-                    crossorigin="anonymous"></script>
+        <!-- Ad Section -->
+        <section id="ad-section">
+            <!-- Google AdSense Ad Unit -->
             <ins class="adsbygoogle"
                  style="display:block"
-                 data-ad-client="ca-app-pub-5707879047868276/9661129952"
-                 data-ad-slot="1234567890"
+                 data-ad-client="YOUR_ADSENSE_AD_UNIT_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
             <script>
@@ -38,41 +38,22 @@
         </section>
 
         <!-- DOC to PDF Tool -->
-        <section id="converter-tool">
-            <input type="file" id="file-input" accept=".doc, .docx, .txt">
-            <select id="file-type">
-                <option value="doc">DOC</option>
-                <option value="docx">DOCX</option>
-                <option value="txt">TXT</option>
-            </select>
+        <section id="doc-to-pdf-tool">
+            <input type="file" id="doc-input" accept=".doc,.docx">
             <button id="convert-btn">Convert to PDF</button>
-            <div id="output-container">
-                <a id="download-link" href="#" download="converted-file.pdf">Download PDF</a>
+            <div id="download-link-container">
+                <a id="download-link" href="#" download="converted_file.pdf">Download PDF</a>
             </div>
-        </section>
-
-        <!-- Bottom Ad Unit -->
-        <section id="ad-bottom">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-5707879047868276/2796338706"
-                    crossorigin="anonymous"></script>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-app-pub-5707879047868276/2796338706"
-                 data-ad-slot="0987654321"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Free Online Converter. All rights reserved. | <a href="#">Privacy Policy</a></p>
+        <p>&copy; 2025 Online DOC to PDF Converter. All rights reserved.</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.8/mammoth.browser.min.js"></script>
-    <script src="DoctoPdf.js"></script>
+    <!-- Include Docx.js and PDF-Lib Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.4.0/docx.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="doctopdfscript.js"></script>
 </body>
 </html>
