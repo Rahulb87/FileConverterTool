@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Crop and optimize images online with our fully responsive image crop tool. Easily crop images to your desired dimensions.">
-    <meta name="keywords" content="image crop, crop tool, optimize images, online image editor, image resizer">
+    <meta name="description" content="Resize and optimize images online with our fully responsive image resize tool. Easily adjust the resize level and optimize images for better performance.">
+    <meta name="keywords" content="image resize, optimize images, online image tool, image resizer, image compressor">
     <meta name="author" content="Rahul Bhute">
-    <title>Online Image Crop Tool</title>
+    <title>Online Image Resize Tool</title>
     <link rel="stylesheet" href="../styles.css">
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_ADSENSE_AD_UNIT_ID" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
-        <h1>Online Image Crop Tool</h1>
+        <h1>Online Image Resize Tool</h1>
     </header>
     <nav>
         <a href="/FileConverterTool/#">Home</a>
@@ -37,24 +37,24 @@
             </script>
         </section>
 
-        <!-- Crop Tool -->
-        <section id="crop-tool">
+        <!-- Resize Tool -->
+        <section id="resize-tool">
             <input type="file" id="image-input" accept="image/*">
-            <div id="crop-container">
-                <img id="crop-image" src="" alt="Image to Crop">
+            <label for="resize-level">Resize Level:</label>
+            <input type="range" id="resize-level" min="10" max="100" value="100">
+            <span id="resize-value">100%</span>
+            <button id="resize-btn">Resize Image</button>
+            <div id="image-container">
+                <img id="output-image" src="" alt="Resized Image">
             </div>
-            <button id="crop-btn">Crop Image</button>
-            <button id="download-btn" disabled>Download Cropped Image</button>
+            <a id="download-link" href="#" download="resized_image.jpg">Download Resized Image</a>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Online Image Crop Tool. All rights reserved.</p>
+        <p>&copy; 2025 Online Image Resize Tool. All rights reserved.</p>
     </footer>
 
-    <!-- Include Cropper.js Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
     <script src="Cropscript.js"></script>
 </body>
 </html>
