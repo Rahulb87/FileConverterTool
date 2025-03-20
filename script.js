@@ -4,7 +4,8 @@ document.getElementById('compress-btn').addEventListener('click', function() {
     const compressionLevel = parseFloat(document.getElementById('compression-level').value);
     const imageContainer = document.getElementById('output-image');
     const downloadLink = document.getElementById('download-link');
-
+    downloadLink.style.display = 'none';
+    
     if (fileInput.files && fileInput.files[0]) {
         const reader = new FileReader();
 
@@ -20,7 +21,7 @@ document.getElementById('compress-btn').addEventListener('click', function() {
                 canvas.height = img.height;
 
                 ctx.drawImage(img, 0, 0);
-
+                downloadLink.style.display = 'block';
                 canvas.toBlob(function(blob) {
                     const compressedImageUrl = URL.createObjectURL(blob);
                     imageContainer.src = compressedImageUrl;
