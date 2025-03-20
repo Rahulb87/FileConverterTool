@@ -1,51 +1,46 @@
 // script.js
-document.getElementById('resize-btn').addEventListener('click', function() {
-    const fileInput = document.getElementById('image-input');
-    const resizeLevel = parseFloat(document.getElementById('resize-level').value) / 100;
-    const imageContainer = document.getElementById('output-image');
-    const downloadLink = document.getElementById('download-link');
-
-    // Hide the download link initially
-    downloadLink.style.display = 'none';
-
-    if (fileInput.files && fileInput.files[0]) {
+document.getElementById('image-input').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
         const reader = new FileReader();
-
         reader.onload = function(e) {
-            const img = new Image();
+            const img = document.getElementById('output-image');
             img.src = e.target.result;
-
-            img.onload = function() {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-
-                // Calculate new dimensions based on resize level
-                canvas.width = img.width * resizeLevel;
-                canvas.height = img.height * resizeLevel;
-
-                // Draw the resized image on the canvas
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-                // Convert the canvas to a Blob and create a download link
-                canvas.toBlob(function(blob) {
-                    const resizedImageUrl = URL.createObjectURL(blob);
-                    imageContainer.src = resizedImageUrl;
-
-                    // Show the download link after resizing is complete
-                    downloadLink.href = resizedImageUrl;
-                    downloadLink.style.display = 'block';
-                }, 'image/jpeg', 0.8); // Adjust quality if needed
-            };
+            img.style.display = 'block';
+            document.getElementById('download-link').style.display = 'none';
         };
-
-        reader.readAsDataURL(fileInput.files[0]);
+        reader.readAsDataURL(file);
     }
 });
 
-// Update the resize level display
-const resizeLevelSlider = document.getElementById('resize-level');
-const resizeValue = document.getElementById('resize-value');
+document.getElementById('quality-level').addEventListener('input', function() {
+    document.getElementById('quality-value').textContent = this.value + '%';
+});
 
-resizeLevelSlider.addEventListener('input', function () {
-    resizeValue.textContent = `${this.value}%`;
+document.getElementById('resize-btn').addEventListener('click', function() {
+    const img = document.getElementById('output-image');
+    const width = parseInt(document.getElementById('width').value);
+    const height = parseInt(document.getElementById('height').value);
+    const format = document.getElementById('format-select').value;
+    const quality = document.getElementById('quality-level').value / 100;
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    if (!width || !height) {
+        alert("Please enter valid width and height values.");
+        return;
+    }
+
+    canvas.width = width;
+    canvas.height = height;
+
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    canvas.toBlob(function(blob) {
+        const url = URL.createObjectURL(blob);
+        const downloadLink = document.getElementById('download-link');
+        downloadLink.href = url;
+        downloadLink.download = `resized_image.${format}`;
+        downloadLink.style.display = 'block';
+    }, `image/${format}`, quality);
 });
