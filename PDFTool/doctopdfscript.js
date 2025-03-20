@@ -1,5 +1,5 @@
 // script.js
-document.getElementById('doc-input').addEventListener('change', function(event) {
+document.getElementById('docx-input').addEventListener('change', function(event) {
     const file = event.target.files[0];
     if (file) {
         document.getElementById('convert-btn').disabled = false;
@@ -7,42 +7,43 @@ document.getElementById('doc-input').addEventListener('change', function(event) 
 });
 
 document.getElementById('convert-btn').addEventListener('click', async function() {
-    const file = document.getElementById('doc-input').files[0];
+    const file = document.getElementById('docx-input').files[0];
     if (!file) {
-        alert("Please select a DOC or DOCX file.");
+        alert("Please select a DOCX file.");
         return;
     }
 
     try {
-        // Use Mammoth.js to extract text from DOCX
+        // Render DOCX file in the preview container
+        const previewContainer = document.getElementById('preview-container');
+        previewContainer.innerHTML = ''; // Clear previous content
+
+        // Use docx-preview to render the DOCX file
         const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer: arrayBuffer });
-        const textContent = result.value; // Extracted text from DOCX
+        docx.renderAsync(arrayBuffer, previewContainer)
+            .then(() => {
+                // Use html2pdf.js to convert the rendered HTML to PDF
+                const element = previewContainer;
+                const options = {
+                    margin: 10,
+                    filename: 'converted_file.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
 
-        // Use PDF-Lib to create a PDF
-        const pdfDoc = await PDFLib.PDFDocument.create();
-        const page = pdfDoc.addPage([600, 800]); // Set page size
-        const { width, height } = page.getSize();
+                html2pdf().from(element).set(options).save();
 
-        // Add text to the PDF
-        page.drawText(textContent, {
-            x: 50,
-            y: height - 50,
-            size: 12,
-            color: PDFLib.rgb(0, 0, 0),
-        });
-
-        // Save the PDF
-        const pdfBytes = await pdfDoc.save();
-        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-
-        // Enable download link
-        const downloadLink = document.getElementById('download-link');
-        downloadLink.href = url;
-        downloadLink.style.display = 'block';
+                // Enable download link
+                const downloadLink = document.getElementById('download-link');
+                downloadLink.style.display = 'block';
+            })
+            .catch((error) => {
+                console.error("Error rendering DOCX file:", error);
+                alert("An error occurred while rendering the DOCX file. Please try again.");
+            });
     } catch (error) {
-        console.error("Error converting DOC to PDF:", error);
+        console.error("Error converting DOCX to PDF:", error);
         alert("An error occurred while converting the file. Please try again.");
     }
 });
