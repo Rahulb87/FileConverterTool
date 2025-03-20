@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Compress and optimize your images online with our fully responsive image compression tool. Reduce image size without losing quality.">
-    <meta name="keywords" content="image compression, optimize images, resize images, image tool, online image compressor">
+    <meta name="description" content="Resize, convert, and optimize images online with our fully responsive image resize tool. Easily resize images to your desired dimensions and convert them to JPG, PNG, and more.">
+    <meta name="keywords" content="image resize, image converter, optimize images, JPG, PNG, online image tool">
     <meta name="author" content="Rahul Bhute">
-    <title>Online Image Compression Tool</title>
+    <title>Online Image Resize Tool</title>
     <link rel="stylesheet" href="../styles.css">
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_ADSENSE_AD_UNIT_ID" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
-        <h1>Online Image Compression Tool</h1>
+        <h1>Online Image Resize Tool</h1>
     </header>
     <nav>
         <a href="/FileConverterTool/#">Home</a>
@@ -23,6 +23,7 @@
         <a href="/FileConverterTool/contact.html">Contact</a>
     </nav>
     <main>
+        <!-- Ad Section -->
         <section id="ad-section">
             <!-- Google AdSense Ad Unit -->
             <ins class="adsbygoogle"
@@ -36,23 +37,34 @@
             </script>
         </section>
 
-        <section id="compression-tool">
+        <!-- Resize Tool -->
+        <section id="resize-tool">
             <input type="file" id="image-input" accept="image/*">
-            <label for="resize-level">Resize Level:</label>
-            <input type="range" id="resize-level" min="10" max="100" value="100">
-            <span id="resize-value">100%</span>
-            <button id="compress-btn">Compress Image</button>
+            <label for="width">Width:</label>
+            <input type="number" id="width" placeholder="Enter width in pixels">
+            <label for="height">Height:</label>
+            <input type="number" id="height" placeholder="Enter height in pixels">
+            <label for="format-select">Select Format:</label>
+            <select id="format-select">
+                <option value="jpg">JPG</option>
+                <option value="png">PNG</option>
+                <option value="webp">WEBP</option>
+            </select>
+            <label for="quality-level">Quality Level:</label>
+            <input type="range" id="quality-level" min="10" max="100" value="80">
+            <span id="quality-value">80%</span>
+            <button id="resize-btn">Resize and Convert</button>
             <div id="image-container">
-                <img id="output-image" src="" alt="Compressed Image">
+                <img id="output-image" src="" alt="Resized Image">
             </div>
-            <a id="download-link" href="#" download="compressed_image.jpg">Download Compressed Image</a>
+            <a id="download-link" href="#" download="resized_image">Download Resized Image</a>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Online Image Compression Tool. All rights reserved.</p>
+        <p>&copy; 2025 Online Image Resize Tool. All rights reserved.</p>
     </footer>
 
-    <script src="resize.js"></script>
+    <script src="resizescript.js"></script>
 </body>
 </html>
