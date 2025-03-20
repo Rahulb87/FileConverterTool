@@ -14,34 +14,31 @@ document.getElementById('convert-btn').addEventListener('click', async function(
     }
 
     try {
+        // Hide the download link initially
+        const downloadLink = document.getElementById('download-link');
+        downloadLink.style.display = 'none';
+
         // Render DOCX file in the preview container
         const previewContainer = document.getElementById('preview-container');
         previewContainer.innerHTML = ''; // Clear previous content
 
         // Use docx-preview to render the DOCX file
         const arrayBuffer = await file.arrayBuffer();
-        docx.renderAsync(arrayBuffer, previewContainer)
-            .then(() => {
-                // Use html2pdf.js to convert the rendered HTML to PDF
-                const element = previewContainer;
-                const options = {
-                    margin: 10,
-                    filename: 'converted_file.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2 },
-                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                };
+        await docx.renderAsync(arrayBuffer, previewContainer);
 
-                html2pdf().from(element).set(options).save();
+        // Use html2pdf.js to convert the rendered HTML to PDF
+        const element = previewContainer;
+        const options = {
+            margin: 10,
+            filename: 'converted_file.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
 
-                // Enable download link
-                const downloadLink = document.getElementById('download-link');
-                downloadLink.style.display = 'block';
-            })
-            .catch((error) => {
-                console.error("Error rendering DOCX file:", error);
-                alert("An error occurred while rendering the DOCX file. Please try again.");
-            });
+        // Generate PDF and show the download link
+        await html2pdf().from(element).set(options).save();
+        downloadLink.style.display = 'block';
     } catch (error) {
         console.error("Error converting DOCX to PDF:", error);
         alert("An error occurred while converting the file. Please try again.");
