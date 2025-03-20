@@ -5,9 +5,6 @@ document.getElementById('compress-btn').addEventListener('click', function() {
     const imageContainer = document.getElementById('output-image');
     const downloadLink = document.getElementById('download-link');
 
-    // Hide the download link initially
-    downloadLink.style.display = 'none';
-
     if (fileInput.files && fileInput.files[0]) {
         const reader = new FileReader();
 
@@ -24,14 +21,10 @@ document.getElementById('compress-btn').addEventListener('click', function() {
 
                 ctx.drawImage(img, 0, 0);
 
-                // Compress the image and create a Blob
                 canvas.toBlob(function(blob) {
                     const compressedImageUrl = URL.createObjectURL(blob);
                     imageContainer.src = compressedImageUrl;
-
-                    // Show the download link after compression is complete
                     downloadLink.href = compressedImageUrl;
-                    downloadLink.style.display = 'block';
                 }, 'image/jpeg', compressionLevel);
             };
         };
@@ -40,7 +33,6 @@ document.getElementById('compress-btn').addEventListener('click', function() {
     }
 });
 
-// Update the slider value display
 const compressionLevelSlider = document.getElementById('compression-level');
 const sliderValue = document.getElementById('slider-value');
 
