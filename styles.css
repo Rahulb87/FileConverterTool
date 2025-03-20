@@ -416,10 +416,10 @@ footer a:hover {
     text-align: center;
 }
 #download-link {
-    display: block; /* Hidden by default */
+    /*display: none;
     padding: 10px 20px;
     background-color: #333;
     color: #fff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 5px;*/
 }
